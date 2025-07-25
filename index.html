@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles/master/master-style.css">
+
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon/stvms-favicon-blue-16x16.png"/>
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon/stvms-favicon-blue-32x32.png"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/favicon/stvms-favicon-blue-180x180.png">
+    <meta name="apple-mobile-web-app-title" content="stvms dev_portfolio">
+    
+    <!-- PAGE TITLE -->
+    <title>stvms - dev portfolio</title>
+
+    <!-- META -->
+    <meta name="description" content="stvms developer portolio">
+    <meta name="keywords" content="stvms, davidberman, dberman, interactive systems">
+    <meta name="author" content="dberman - stvms">
+    <!-- created by hand -->
+    <!-- v1.0 -->
+</head>
+<body>
+    
+    <!-- <header>
+        <div class="header-container">Header</div>
+    </header> -->
+
+    <nav class="nav-element">
+        <!-- NOTE: hide tooltip-wrapper (including button) when JS is disabled -->
+        <noscript>
+            <style>
+                .tooltip-wrapper {
+                    display: none !important;
+                }
+            </style>
+        </noscript>
+
+       <!-- <div class="tooltip-wrapper">
+           <button id="toggle-theme-btn" class="theme-toggle" aria-label="toggle dark mode">
+               <span class="icon sun">&#x263C;</span>
+               <span class="icon moon">&#x2727;</span>
+           </button>
+           <span class="tooltip-text">Toggle Theme</span>
+        </div> -->
+
+        <div class="tooltip-wrapper">
+            <!-- NOTE: custom svg for button icon sun/moon -->
+            <button id="toggle-theme-btn" class="theme-toggle" aria-label="toggle dark mode">
+                <span class="icon sun" aria-hidden="true">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"/>
+                        <line x1="12" y1="1" x2="12" y2="3"/>
+                        <line x1="12" y1="21" x2="12" y2="23"/>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                        <line x1="1" y1="12" x2="3" y2="12"/>
+                        <line x1="21" y1="12" x2="23" y2="12"/>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                    </svg>
+                </span>
+                <span class="icon moon" aria-hidden="true">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 0111.21 3 7 7 0 0012 21a9 9 0 009-8.21z"/>
+                    </svg>
+                </span>
+            </button>
+
+            <span class="tooltip-text">Toggle Theme</span>
+        </div>
+
+    </nav>
+
+    <!-- page content -->
+    <main id="main-container">
+
+        <div class="page-container-grid">
+
+            <!-- sidebar -->
+            <div class="sidebar">
+                <!-- used for profile showcase -->
+                <div class="profile-container">
+                    <!-- profile picture -->
+                    <div class="profile-pic">
+                        <a class="profile-link" draggable="false" href="https://github.com/stvms" aria-label="stvms github">
+                            <img draggable="false" src="assets/images/stvms-little-burden-profile-01.jpg" alt="profile picture of stvms">
+                        </a>
+                    </div>
+
+                    <!-- profile title -->
+                    <div class="profile-title">
+                        <h1>stvms</h1>
+                        <h2>David Berman</h2>
+                        <p>exploring interactive systems</p>
+                    </div>
+
+                    <!-- profile about -->
+                    <div class="profile-about">
+                        <h1>About</h1>
+                        <p>
+                            Hi my name is David and I like building minimal interactive systems.
+                            Lately, I've been diving into machine learning and how it can enhance the user experience - wether it's integrated in new types of interfaces,
+                            or just as adaptive tools that make things more practical. Always thinking about how to make tech feel intuitive, fun and useful.
+                            <br><br>
+                            Take a look around and check out what I've been working on!
+                        </p>
+                    </div>
+                    
+                    <!-- profile resources -->
+                    <div class="profile-resources">
+                        <p>
+                            Resume - 
+                            <a href='assets/resources/cv-dberman-de-2025.pdf' target="_blank">DE</a> 
+                            <a href='assets/resources/cv-dberman-en-2025.pdf' target="_blank">EN</a> | 
+                            <a class="mail-link" href="mailto:dave.kb@web.de"> Mail </a> 
+                        </p>
+                        <p>Frankfurt am Main</p>
+                    </div>
+                </div>
+            
+            </div>
+            
+            <!-- content side (scrollable) -->
+            <div class="content">
+
+                <!-- section personal projects -->
+                <section id="section-personal-projects" class="section">
+                    <div class="section-container">
+                        <h1>Personal Projects</h1>
+                        <p>A small collection of different personal projects, focusing on user interaction and machine learning.</p>
+                        
+                        <!-- project a -->
+                        <div class="project">
+                            <h3>Mixture of Experts - AI driven MultiView Node infinite Canvas</h3>
+                            <div class="img-banner">
+                                <a class="banner-link" draggable="false" href="/project-mvn/" aria-label="visit project mixture of experts mvn">
+                                    <img loading="lazy" draggable="false" src="assets/images/frontpage/mvn-project-preview-02.jpg" alt="mixture of experts multiview node infinite canvas showcase">
+                                </a>
+                                <p>Infinite Canvas with MultiView Nodes and the Custom Context Menu</p>
+                            </div>
+
+
+                            <p>
+                                A node-based workspace designed to use various Mixture-of-Experts models dynamically in an interconnected way. Each model has its own specialization and allows quick generation.
+                                Additional focus in this project lies on local and offline generation.
+                                Supports Text-to-Image, Image-to-Image, Image-to-Text and Text-to-Text workflows, building a closed loop of chainable operations. 
+                                Inspired by <a href="https://www.florafauna.ai/" target="_blank">Flora and Fauna AI</a>.
+                                <br><br>
+                                The results are endless.
+                            </p>
+
+                            <div class="technologies-info">
+                                <h3>Technologies</h3>
+                                <p>
+                                    <span>Frontend:</span> React, Reactflow, <span>Backend:</span> Python
+                                    <br>
+                                    For the API calls <a href="https://www.comfy.org/" target="_blank">ComfyUI</a> is used as the Engine. With a custom 4-in-1 workflow for the different models that are switched via the backend script.
+                                    <br><br>
+                                    <span>Models:</span>
+                                    <a href="https://huggingface.co/stable-diffusion-v1-5/stable-diffusion-v1-5" target="_blank">SD 1.5</a>, <a href="https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0" target="_blank">SDXL</a> (text-to-image generation), 
+                                    <a href="https://huggingface.co/deepseek-ai/Janus-Pro-1B" target="_blank">DeepSeek - Janus Pro</a> (image understanding), 
+                                    <a href="https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3" target="_blank">Mistral-7B</a> (unimodal language model).
+                                    All models are around 4GB, tested on a GTX 1060 6 VRAM, focusing on low hardware requirements and constrained resources. Easily scalable on more powerful hardware.
+                                </p>
+                            </div>
+                            <!-- NOTE: seperate page for mixture of experts - infinite canvas mvn project -->
+                            <a class="custom-btn" draggable="false" href="/project-mvn/">Learn More</a>
+
+                        </div>
+
+                        <!-- project b -->
+                        <div class="project">
+                            <h3>Interactive Scribbling</h3>
+                            <div class="img-banner">
+                                <img loading="lazy" draggable="false" src="assets/images/frontpage/custom-scribble-orig-02.jpg" alt="interactive scribbling showcase">
+                                <p>Using a sketch as the starting point for controlled image generation with SD 1.5</p>
+                            </div>
+
+                            <p>
+                                A project designed to iterate your own sketch with the help of machine learning.
+                                Rather than using only prompts to create an image, the user is encouraged to sketch his vision and apply different stylings to it.
+                                This allows the generated image to better align to the vision of the creator.
+                                <br>
+                                Furthermore the goal is to incorporate AI generated workflows in iterative steps, instead of common <i>'prompt and go'</i> generations.
+                                By allowing the user to draw, the image generation is guided by the actual drawing and not only relying on prompts. 
+                                Bringing AI workflows more in line with the vision of the artist.
+                            </p>
+
+                            <div class="technologies-info">
+                                <h3>Technologies</h3>
+                                <p>
+                                    Python and Gradio for the frontend. ComfyUI as the backend image generation.
+                                    <br>
+                                    A custom workflow is specialized for drawings (Control Net). 
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <!-- project c -->
+                        <div class="project">
+                            <h3>Real-Time Capture Anywhere & Generate</h3>
+                            <div class="img-banner">
+                                <img loading="lazy" draggable="false" src="assets/images/frontpage/capture-tool-02.jpg" alt="real time capture & generate anywhere showcase">
+                                <p>Real time capturing while sketching, prompts the generation engine in parallel after every stroke</p>
+                            </div>
+
+                            <p>
+                                Extending the project Interactive Scribbling by focusing on quicker generation and a more flexible usage across the board, comes Real-Time Capture Anywhere & Generate. 
+                                Inspired by the concept of LCM loras and <a href="https://github.com/flowtyone/flowty-realtime-lcm-canvas" target="_blank">flowtyone's realtime lcm canvas</a>,
+                                which allows very fast generation of drawings even on lower tier hardware.
+                                <br>
+                                Capture Anywhere & Generate has the added benefit, to not rely on the gradio built-in Image Editor for the drawing canvas in the original prototype.
+                                <br><br>
+                                Instead with Capture Anywhere the user can select his own preferred application of choice. Photoshop, Blender etc. 
+                                Monitoring and instantly generating an image, without leaving his workplace. 
+                                <br><br>
+                                Similar to Interactive Scribbling, this approach brings user creativity even closer to an iterative process with AI involved.
+                                Giving more control to the individual and placing AI as a <i>'Tool'</i> and not a <i>'Creative Director'</i>.
+                            </p>
+
+                            <div class="technologies-info">
+                                <h3>Technologies</h3>
+                                <p>
+                                    Python and Gradio for rapid prototyping a User Interface. The desktop capturing can be configured via the <i>'Set Region & Capture'</i> button located at the left toolbar.
+                                    <br>
+                                    <span>Models:</span> LCM Lora SD 1.5 with <a href="https://huggingface.co/Lykon/dreamshaper-7" target="_blank">Lykon Dreamshaper-7</a>
+                                </p>
+                            </div>
+
+                            <h3>Showcase</h3>
+                            <div class="video-wrapper">
+                                <video autoplay muted loop playsinline disablePictureInPicture>
+                                    <source src="assets/clips/webm/capture-anywhere-showcase-16-by-9-cut-02.webm" type="video/webm">
+                                    <source src="assets/clips/mp4/capture-anywhere-showcase-16-by-9-cut-02.mp4" type="video/mp4">
+                                    <!-- support message -->
+                                    <h3 class="video-support-info">Your browser does not support HTML videos.</h3>
+                                    <!-- fallback -->
+                                    <div class="img-banner">
+                                        <img loading="lazy" draggable="false" src="assets/clips/poster/capture-anywhere-poster-02a.jpg" alt="capture anywhere showcase poster">
+                                    </div>
+                                </video>
+                            </div>
+
+                            <div class="quick-info">
+                                <p>
+                                    Note: LCM Lora and real-time monitoring allows for very fast results, around 2 seconds on a GTX 1060 6GB. Especially when capturing after every stroke making the AI workflow near instant or in other words running in parallel.
+                                    <span>Tip:</span> keeping the step count at 1 or 2, renders the AI generated image as close as possible to the actual sketch, which again should better align with the vision of the artist.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </section>
+                
+                <!-- section other projects -->
+                <section id="section-other-projects" class="section">
+                    <div class="section-container">
+                        <h1>Other Projects</h1>
+
+                        <!-- project streetform -->
+                        <div class="project">
+                            <div class="img-banner">
+                                <a class="banner-link" draggable="false" href="https://www.streetform.com" target="_blank" aria-label="visit streetform">
+                                    <img loading="lazy" draggable="false" src="assets/images/frontpage/the-streetform-webproject-orig-02.jpg" alt="streetform web project">
+                                </a>
+                            </div>
+
+                            <p>
+                                <!-- A sleek and responsive fully modernized website for an author and illustrator  -->
+                                A fully updated, responsive website created for an author and illustrator, designed with a modern aesthetic.
+                                Handcrafted from the ground, using HTML, CSS and Javascript. Fast & Lightweight, mobile friendly and even supports <i>'No JS'</i>.
+                                <br><br>
+                                No external Libraries, No Boilerplate (Web Builders) just custom code.
+                                Best experienced online, visit <a href="https://www.streetform.com" target="_blank">www.streetform.com</a>
+                            </p>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- section experience -->
+                <section id="section-experience" class="section">
+                    <div class="section-container">
+                        <h1>Experience</h1>
+                        <div id="experience-card" class="career-card">
+                            <div class="logo-container">
+                                <img draggable="false" src="assets/icons/fhg-32x32.png" width="32" height="32" alt="fraunhofer logo">
+                                <h2>Fraunhofer IGD Darmstadt</h2>
+                            </div>
+                           
+                            <h3 id="igd-position">Research Assistant, October 2020 - March 2024</h3>
+                            <p>Domain - Interactive Engineering Technologies</p>
+                            <p>Development of Interactive 3D Modeling systems, Geometry-processing and Parameterization, Concept of interactive User Intefaces, UX Design</p>            
+                        </div>
+                    </div>
+                </section>
+
+                <!-- section education -->
+                <section id="section-education" class="section">
+                    <div class="section-container">
+                        <h1>Education</h1>
+                        <div id="education-card" class="career-card">
+                            <h2>Technical University of Darmstadt</h2>
+                            <h3 id="tud-position">October 2014 - November 2023</h3>
+                            
+                            <div class="vita-item">
+                                <!-- list 1 -->
+                                <ul>
+                                    <li>2023 Visual Computing - Master of Science
+                                        <ul>
+                                            <li>Focus in Photogrammetry, Computer Graphic, Capturing Reality, Human Computer Interaction, Machine Learning</li>
+                                            <li>Thesis: Investigation and Improvements of Neural Field Efficiency and Quality</li>
+
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <!-- list 2 -->
+                                <ul>
+                                    <li>2020 Computer Sciene - Bachelor of Science
+                                        <ul>
+                                            <li>Focus in Computer Vision, Image processing, Visual Analytics</li>
+                                            <li>Thesis: Sketch-based Definition and Modification of Geometric Parameters for Mass Customization</li>
+                                        </ul>
+                                    </li>
+                                </ul>        
+                            </div> 
+
+                        </div>
+                    </div>
+                </section>
+
+                <!-- section skills -->
+                <section id="section-skills" class="section">
+                    <div class="section-container">
+                        <h1>Skills</h1>
+                        
+                        <div class="skills-grid">
+
+                            <div class="skill-item">
+                                <h2>Languages</h2>
+                                <ul class="skill-list">
+                                    <li>C++</li>
+                                    <li>C</li>
+                                    <li>Python</li>
+                                    <li>HTML/5</li>
+                                    <li>CSS/SCSS</li>
+                                    <li>JavaScript</li>
+                                    <li>PHP</li>
+                                    <li>Java</li>
+                                </ul>
+                            </div>
+                            <div class="skill-item">
+                                <h2>Frameworks & Libraries</h2>
+                                <ul class="skill-list">
+                                    <li>Qt</li>
+                                    <li>OpenGL</li>
+                                    <li>PyTorch</li>
+                                    <li>React</li>
+                                    <li>Reactflow</li>
+                                    <li>Node.js</li>
+                                </ul>
+                            </div>
+                            <div class="skill-item">
+                                <h2>Software & Tools</h2>
+                                <ul class="skill-list">
+                                    <li>Visual Studio</li>
+                                    <li>Visual Studio Code</li>
+                                    <li>Adobe Photoshop</li>
+                                    <li>Affinity Suite</li>
+                                    <li>Microsoft Office Suite</li>
+                                    <li>Sidefx Houdini</li>
+                                    <li>MeshLab</li>
+                                    <li>Cura</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- section interests -->
+                <section id="section-interests" class="section">
+                    <div class="section-container">
+                        <h1>Interests</h1>
+                        <p>Video game development, Film & Animation, Publishing, Mixed Reality, Social Media Trends, Visual Analytics, 3D-Print</p>
+                    </div>
+                </section>
+
+                <!-- section noteworthy -->
+                <section id="section-noteworthy" class="section">
+                    <div class="section-container">
+                        <h1>Noteworthy</h1>
+                        <p>Social Media Community Management (Instagram, Meta)</p>
+                    </div>
+                </section>
+
+                
+                <!-- NOTE: footer now inside of content -->
+                <!-- FOOTER -->
+                <footer>
+                    <div class="footer-container">
+                        <a class="back-top" href="#">Top &#8593;</a>
+                        <p>2025 Created by David Berman.</p>
+                        <!-- <p>Copyright &#169; 2025 Created by David Berman.</p> -->
+                    </div>
+                </footer>
+            </div>
+             
+        </div>
+            
+    </main>
+
+
+    <!-- JS Script -->  
+    <script src='scripts/toggle_theme_01.js' defer></script>
+
+</body>
+</html>

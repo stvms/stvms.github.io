@@ -1,0 +1,1276 @@
+// NOTE: written in scss
+// master style css
+
+// @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+// full range
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,600;1,6..12,600&display=swap');
+
+:root {
+    --page-bg-color: white;
+    --secondary-bg-color: whitesmoke;
+    --sidebar-bg-color: var(--secondary-bg-color);
+    --txt-color: black;
+    --footer-bg-color: whitesmoke;
+    --max-content-width: 850px; // NOTE: max 1000px - 1200px
+    --max-content-width-large: 1300px; // 1000px - 1300px
+    --max-sidebar-width: 500px;
+    --min-sidebar-width: 400px;
+    --section-width: 100%;
+    --global-padding: 25px;
+    --global-gap: var(--global-padding); // in sync with global padding
+    --link-color: #1672D9;
+    
+    // --nav-profile-outline-color: gray;
+
+    // icon sizes
+    --nav-btn-width: 30px;
+    --nav-btn-height: 30px;
+    --nav-profile-icon-width: var(--nav-btn-width);
+    --nav-profile-icon-height: var(--nav-btn-height);
+
+    // buttons
+    --toggle-theme-btn-color: var(--page-bg-color);
+    --toggle-theme-btn-color-hover: var(--secondary-bg-color);
+    --custom-btn-color: var(--page-bg-color);
+    --custom-btn-border-color: black;
+    --custom-btn-color-hover: black;
+    --sidebar-custom-btn-color: var(--sidebar-bg-color);
+
+    // misc
+    --info-border-color: #dfe2e5ed;
+    --igd-position-color: #0BAA90;
+    --education-time-color: var(--link-color);
+
+    --video-support-info-color: #ffaa33;
+    --video-support-info-bg-color: #f9d59c;
+
+}
+
+.dark-mode {
+    // --page-bg-color: #1F2F46;
+    // --page-bg-color: #323232;
+    
+    // --secondary-bg-color: #353535;
+    // --secondary-bg-color: #1A1A1E;
+    
+    // NOTE: dark mode page background color
+    --page-bg-color: #22232A;
+    --secondary-bg-color: #2D2D34;
+    --sidebar-bg-color: var(--secondary-bg-color);
+    
+    --txt-color: white; 
+
+    // --footer-bg-color: #423064;
+    --footer-bg-color: #292A3C;
+
+    // --link-color: #8dffb3;
+    --link-color: #00bfff;
+
+    // buttons
+    --toggle-theme-btn-color: #2971D8;
+    --toggle-theme-btn-color-hover: #115fcb;
+    --custom-btn-color: var(--toggle-theme-btn-color);
+    --custom-btn-border-color: var(--toggle-theme-btn-color);
+    --custom-btn-color-hover: var(--toggle-theme-btn-color-hover);
+    --sidebar-custom-btn-color: var(--toggle-theme-btn-color);
+
+    // --nav-profile-outline-color: var(--toggle-theme-btn-color);
+
+    // misc
+    --info-border-color: #9985FF;
+    --igd-position-color: var(--txt-color);
+    --education-time-color: var(--link-color);
+}
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 100%; // base font size
+}
+
+// nav element area styling, always on top and fixed
+.nav-element {
+    position: fixed;
+    z-index: 2; // 1
+    top: 0;
+    right: 0;
+    
+    display: flex;
+    // NOTE: nav-element (navbar) overall padding so that elements inside are not placed directly at page borders
+    padding: var(--global-padding); // 25px
+    // border: 1px solid red;
+    
+    // NOTE: allows text selection below, rendering the nav-elment as pass-through
+    // But: the actual button inside the nav-element has pointer-events enabled
+    pointer-events: none;
+
+    .tooltip-wrapper {
+        position: relative;
+        display: inline-block;
+
+        .tooltip-text {
+            position: absolute;
+            top: 50%;
+            right: 100%;
+            transform: translateY(-50%);
+
+            background-color: black;
+            color: white;
+
+            text-align: center;
+            border-radius: 4px;
+            padding: 4px 4px;
+            // create a small gap between tooltip and button
+            margin-right: 10px;
+
+            font-size: 0.9rem;
+            visibility: visible;
+
+            white-space: nowrap;
+            pointer-events: none;
+            opacity: 0;
+            
+            z-index: inherit;
+            transition: opacity 0.3s ease;
+            // no transition delay when not hovering
+            transition-delay: 0s;
+    
+        }
+        // tooltip right arrow
+        .tooltip-text::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            margin-top: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: transparent transparent transparent black;
+        }
+    }
+    .tooltip-wrapper:hover .tooltip-text {
+        opacity: 1;
+        // only show tooltip after resting on a button for x seconds
+        transition-delay: 1s;
+    }
+
+    // theme toggle button id
+    #toggle-theme-btn {
+        // margin: 25px;
+        border-radius: 5px;
+        background-color: var(--toggle-theme-btn-color);
+        cursor: pointer;
+    }
+    #toggle-theme-btn:hover {
+        background-color: var(--toggle-theme-btn-color-hover);
+    }
+
+    // general button styling
+    .theme-toggle {
+        // NOTE: enable pointer events on button
+        pointer-events: auto;
+
+        position: relative;
+        width: var(--nav-btn-width);
+        height: var(--nav-btn-height);
+
+        border: none;
+        
+        // NOTE: only when using a html code font icon
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
+        // font-family: sans-serif;
+        // line-height: 1;
+        
+        // small box shadow for the button
+        // small box shadow for the button
+        box-shadow: inset 0 0 0.5px 1px  hsla(0, 0%, 100%, 0.075),
+              // shadow ring
+              0 0 0 1px hsla(0, 0%, 0%, 0.05),
+              // multipe soft shadows
+              0 0.3px 0.4px hsla(0, 0%, 0%, 0.02),
+              0 0.9px 1.5px hsla(0, 0%, 0%, 0.045),
+              0 3.5px 6px hsla(0, 0%, 0%, 0.09);
+
+        // when using svg
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+        // icon styling inside of theme button
+        .icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 24px;
+            height: 24px;
+            transform: translate(-50%, -50%) scale(1);
+            // NOTE: using a scale factor expands the icon frame beyond 24px
+            // use scale(2) to scale the html code font icon
+            pointer-events: none;
+            
+            color: var(--txt-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            // border: 1px solid red;
+            
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            opacity: 0; 
+        }
+        // default theme sun is visible
+        .sun {
+            opacity: 1;
+        }
+    }
+}
+
+// during dark mode sun icon will be hidden
+body.dark-mode .theme-toggle .sun {
+    opacity: 0;
+}
+// and the moon icon is now visible instead
+body.dark-mode .theme-toggle .moon {
+    opacity: 1;
+}
+  
+
+// NOTE: selective transition of body and affected child elements for dark mode
+// makes the transition more in sync
+// .theme-changing is a dynamically added class, that gets added/removed after toggling the theme
+.theme-changing body,
+.theme-changing #nav-project-page,
+.theme-changing .nav-profile-container p,
+.theme-changing .sidebar,
+.theme-changing .content,
+.theme-changing .img-banner p,
+.theme-changing .duo-grid,
+.theme-changing .career-card,
+.theme-changing a {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+// NOTE: extra handling for border-color and title color, located in technologies-info, quick-info and career-card
+.theme-changing .technologies-info, .quick-info, .career-card h3 {
+    transition: border-color 0.3s ease, color 0.3s ease;
+}
+// NOTE: extra handling for footer, which uses a background: linear-gradient instead of background-color
+.theme-changing footer {
+    transition: --grad-start 0.3s ease, --grad-end 0.3s ease, color 0.3s ease;
+}
+
+body {
+
+    color: var(--txt-color);
+    // custom font, primary and fallback
+    font-family: 'Nunito Sans', sans-serif;
+    // font-family: 'Roboto', sans-serif;
+
+    background-color: var(--page-bg-color);
+    // main flex
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh
+}
+
+////////////////////////////////////////////////////////////////
+// /// (0) Frontpage - stvms Developer Portfolio ///
+////////////////////////////////////////////////////////////////
+
+main {
+    position: relative;
+    // main flex in body
+    display: flex;
+
+    // flex: 1 0 auto;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: auto;
+    // border: 1px solid red;
+}
+
+// general styling
+img {
+    user-select: none;
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+// NOTE: default sizes of h1 h2 h3 etc. (reference)
+// h1 { font-size: 2rem; }
+// h2 { font-size: 1.5rem; }
+// h3 { font-size: 1.17rem; }
+// h4 { font-size: 1rem; }
+// h5 { font-size: 0.83rem; }
+// h6 { font-size: 0.67rem; }
+
+.custom-btn {
+    max-width: 150px;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    padding: 5px;
+    background-color: var(--custom-btn-color);
+    border: 1px solid var(--custom-btn-border-color);
+    color: var(--txt-color);
+    text-decoration: none !important;
+    user-select: none;
+    // transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    transition: all 0.3s ease;
+}
+.custom-btn:hover {
+    color: white;
+    background-color: var(--custom-btn-color-hover);
+    border-color: var(--custom-btn-color-hover);
+}
+
+// NOTE: flex as an alternative to grid, as the main page container (not used)
+.page-container-flex {
+    display: flex;
+    flex-grow: 1;
+    width: 100%;
+    height: auto;
+
+    // NOTE: similar to grid-template-columns: 1fr 2fr;
+    .sidebar {
+        flex: 1;
+        // NOTE: using a max and min width constrain for sidebar
+        max-width: var(--max-sidebar-width);
+        min-width: var(--min-sidebar-width);
+    }
+    .content {
+        flex: 2;
+    }
+}
+
+// Main page container layout, type grid (default)
+.page-container-grid {
+    // border: 2px solid green;
+    flex-grow: 1;
+    display: grid;
+    grid-auto-flow: column;
+    // 1fr 2fr alternative
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: auto; // 1fr
+    width: 100%;
+    height: auto;
+    // justify-content: start;
+}
+
+// left side
+.sidebar {
+    // border: 1px solid purple;
+    position: sticky;
+    top: 0;
+    align-self: start;
+    background-color: var(--sidebar-bg-color);
+    height: 100vh;
+    width: 100%;
+    
+    // display: flex;
+    // flex-direction: column;
+    // min-height: 100vh;
+    
+    overflow-y: auto;
+    min-width: var(--min-sidebar-width);
+    //max-width: var(--max-sidebar-width); // subjective
+}
+// right side
+.content {
+    // border: 1px solid brown;
+    // NOTE: start with a little offset
+    margin-top: 25px;
+    overflow-y: auto;
+}
+
+.profile-container  {
+    // border: 3px solid magenta;
+    
+    flex-grow: 1;
+    display: inline-flex;
+    flex-direction: column;
+    // justify-content: space-between;
+    // align-items: normal;
+
+    gap: var(--global-gap); // 50px
+
+    // min-height: 0;
+
+    width: 100%;
+    height: 100%;
+    padding: var(--global-padding);
+}
+.profile-pic {
+    // border: 1px solid red;
+    display: inline-flex;
+    width: fit-content;
+    height: auto;
+
+    img {
+        display: block;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: contain;
+        transition: 0.2s ease-in-out;
+    }
+
+    a.profile-link {
+        display: inline-block;
+    }
+    a.profile-link:hover img {
+        transform: scale(1.025);
+    }
+}
+.profile-title {
+    // border: 1px solid red;
+    h1 {
+        // margin: 0;
+        font-size: 3rem;
+    }
+    h2 {
+        font-size: 1rem;
+    }
+}
+.profile-about {
+    // border: 1px solid black;
+    h1 {
+        font-size: 2rem;
+    }
+}
+
+.profile-resources {
+    // border: 1px solid blue;
+    
+    // pin to the bottom
+    margin-top: auto;
+    display: inline-flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    gap: 10px;
+    
+    p {
+        font-size: 1rem;        
+    }
+}
+
+
+section,
+.section {
+    // border: 1px solid black;
+    display: flex;
+    justify-content: left; // center
+    align-items: center;
+    // width: 100%;
+    width: var(--section-width); // 100%
+    height: auto;
+    margin: 0 auto;
+}
+
+.section-container {
+    max-width: var(--max-content-width);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--global-gap); // 25px
+    justify-content: center;
+    align-items: normal;
+    padding: var(--global-padding);
+
+    h1 {
+        font-size: 1.5rem;
+        border-bottom: 1px solid #EAECEF;
+    }
+
+    p {
+        // border: 1px solid red;
+        font-size: 1rem;
+    }
+
+}
+
+// NEW VIDEO tag
+.video-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    
+    width: 100%;
+    height: auto; // 250px
+
+    // NOTE: no gap properties in video-wrapper
+    h3 {
+        margin-bottom: 25px;
+    }
+    p {
+        margin-top: 25px;
+    }
+    // border: 1px solid blue;
+}
+
+// limit video height, set width to auto so that align-items: flex-start applies
+#video-max-height {
+    align-self: flex-start;
+    width: auto;
+    height: 100%;
+    max-height: 300px;
+}
+video {
+    // border: 1px solid orange;
+    width: 100%;
+    height: 100%;
+
+    object-fit: scale-down;
+    // NOTE: modern only
+    // aspect-ratio: 16/9;
+    
+    // NOTE: should only be used when video has attributes autoplay muted loop playsinline disablePictureInPicture
+    // no play, no right click
+    pointer-events: none;
+}
+.video-support-info {
+    font-size: 1rem;
+    background-color: var(--video-support-info-bg-color);
+    border-left: 5px solid var(--video-support-info-color);
+    padding: 5px;
+    padding-left: 15px;
+    color: black;
+    width: fit-content;
+}
+
+.project {
+    display: inline-flex;
+    gap: var(--global-gap); // 25px
+    flex-direction: column;
+}
+// NOTE: an image banner container, with optional img-caption 
+// if desired, control height
+.img-banner {
+    // border: 1px solid blue;
+    display: flex;
+    flex-direction: column;
+    // align-items: normal;
+    // justify-content: normal;
+
+    gap: var(--global-gap); // 25px
+    
+    width: fit-content;
+    height: auto;
+    // height: 500px;
+    overflow: hidden;
+
+    img {
+        // border: 1px solid red;
+        display: block;
+        width: 100%;
+        height: 100%; // control custom height of image
+        // object-fit: contain;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    // NOTE: optional
+    // p,
+    // .img-caption {
+    //     width: 100%;
+    //     padding: 5px;
+    //     background-color: var(--secondary-bg-color);
+    //     border: 1px solid blue;
+    // }
+
+    // small transition effect (zoom) to highlight link
+    a.banner-link {
+        display: inline-block;
+        overflow: hidden;
+    }
+
+    a.banner-link:hover img {
+        transform: scale(1.025);
+    }
+
+}
+
+
+.technologies-info,
+.quick-info {
+    width: 100%;
+    border-left: 5px solid var(--info-border-color);
+    padding-left: 15px;
+
+    h3 {
+        margin-bottom: 15px; // subjective
+    }
+
+    span {
+        text-decoration: underline;
+    }
+}
+
+// education & experience area styling with career-card
+.career-card {
+    // border: 1px solid blue;
+    // display: flex;
+   
+    h2 {
+        font-size: 1.3rem;
+    }
+    h3 {
+        font-size: 1rem;
+        padding-left: 15px;
+        margin-bottom: 25px;
+        border-left: 5px solid var(--txt-color);
+    }
+    
+    .vita-item {
+        display: flex;
+        flex-direction: column;
+        gap: var(--global-gap); // 25px
+
+        ul {
+            list-style-type: square;
+            list-style-position: inside;
+        }
+
+        ul ul{
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+ 
+    }
+
+}
+#education-card {
+    background-color: var(--secondary-bg-color);
+    padding: var(--global-padding); // 25px
+
+    #tud-position {
+        //specific
+        color: var(--education-time-color);
+        border-left: 5px solid var(--education-time-color);
+    }
+}
+#experience-card {
+    
+    .logo-container {
+        display: inline-flex;
+        // align-items: baseline;
+        gap: 10px;
+    }
+
+    #igd-position {
+        // specific
+        color: var(--igd-position-color);
+        border-color:var(--igd-position-color);
+    }
+}
+
+
+// skills area styling
+.skills-grid  {
+    // border: 1px solid red;
+    margin: 0 auto; // centering
+    width: 100%;
+
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: auto;
+    // grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 50px;
+
+    // background-color: whitesmoke;
+    // padding: 20px;
+
+    h2 {
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+    }
+
+    // .skill-item {
+    //      border: 1px solid red;
+    // }
+
+    .skill-list {
+        list-style-type: none;
+        padding-left: 0;
+        margin: 0;
+    }
+
+}
+
+// animate gradinets via @property for footer background
+@property --grad-start {
+    syntax: '<color>';
+    // will be overwritten
+    initial-value: white;
+    inherits: false;
+  }
+  
+@property --grad-end {
+    syntax: '<color>';
+    // will be overwritten
+    initial-value: whitesmoke;
+    inherits: false;
+}
+
+
+
+footer {
+    position: static;
+    bottom: 0;
+    width: 100%;
+    // text-align: right; // center
+    // background-color: var(--footer-bg-color);
+    // background: linear-gradient(to right, var(--page-bg-color), var(--footer-bg-color));
+    
+    // NOTE: changing intial values to page bg color and footer bg color
+    --grad-start: var(--page-bg-color);
+    --grad-end: var(--footer-bg-color);
+    background: linear-gradient(to right, var(--grad-start), var(--grad-end));
+    // background: linear-gradient(to right, var(--grad-start) 38.2%, var(--grad-end) 100%); // example with golden ratio
+    
+    // NOTE: transition handled above @see 'selective transition' affecting body and all its child elements
+}
+.footer-container  {
+    padding: var(--global-padding); // 25px
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    flex-flow: row wrap;
+    
+    a.back-top {
+        color: var(--txt-color);
+        text-decoration: none;
+    } 
+    a.back-top:hover {
+        color: var(--link-color);
+    }
+}
+
+////////////////////////////////////////////////////////////////
+// /// (1) Project Page - Mixture of Experts, Multiview Node ///
+////////////////////////////////////////////////////////////////
+
+#nav-project-page {
+    // NOTE: enable pointer events on full navbar, no pass-through
+    pointer-events: auto;
+
+    // border: 1px solid red;
+    position: sticky;
+    width: 100%;
+    height: auto;
+    // background-color: var(--page-bg-color);
+    background-color: var(--secondary-bg-color);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: normal; // safe
+    // align-items: center;
+
+    // NOTE: subtle shadow, located at the bottom of the navbar, to seperate element from page content
+    box-shadow: 0 4px 6px -4px rgba(0, 0, 0, 0.2);
+
+    .nav-profile-link {
+        display: inline-block;
+        text-decoration: none;
+    }
+    .nav-profile-link:hover p {
+        transition: color 0.3s ease;
+        color: var(--link-color);
+    }
+    
+    .nav-profile-container {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        align-items: center;  
+        line-height: 1;
+        // border: 1px solid orange;
+        
+        // &:hover {
+        //     outline: 2px solid var(--nav-profile-outline-color);
+        //     outline-offset: 5px;
+        //     border-radius: 5px;
+        // }
+
+        p {
+            font-size: 1.5rem;
+            color: var(--txt-color);
+            user-select: none;
+        }
+        img {
+            width: var(--nav-profile-icon-width); // 30px
+            height: var(--nav-profile-icon-height); // 30px
+            border-radius: 50%;
+        }
+    }
+    
+}
+// NOTE: backdrop-filter on navbar project page
+@supports (backdrop-filter: blur(50px)) {
+    .dark-mode #nav-project-page {
+        background-color: transparent;
+        backdrop-filter: blur(50px);
+    }
+}
+#single-column-layout {
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+}
+#content-project-page {
+    // border: 1px solid red;
+    // NOTE: no offset needed due to no sidebar and the navbar
+    margin-top: unset;
+}
+// special banner section with custom background  
+#banner-section {
+    background-color: #333333;
+}
+.section-project-page {
+    // border: 1px solid blue;
+    // NOTE: center layout for sections
+    justify-content: center;
+}
+.wide {
+    // border: 1px solid blue;
+    max-width: var(--max-content-width-large);
+}
+.banner-wide {
+    max-width: var(--max-content-width-large);
+    padding-top: 0;
+    padding-bottom: 0;
+}
+// NOTE: special, banner to create a cover image
+#cover-img-banner {
+    position: relative;
+    align-self: center;
+    width: 100%;
+    height: 30vw;
+    min-height: 200px;
+    max-height: 450px;
+
+    .cover-overlay-title {
+        position: absolute;
+        top: 25px;
+        left: 0;
+        padding: var(--global-padding); // 25px
+        background-color: var(--page-bg-color);
+        color: var(--txt-color);
+        text-transform: uppercase;
+        font-size: large;
+        z-index: 1;
+    }
+
+    // NOTE: blur container for image banner
+    .blur-right-side {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+    }
+    @supports (backdrop-filter: blur(3px)) {
+        .blur-right-side:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40%;
+            height: 100%;
+            backdrop-filter: blur(3px);
+
+            pointer-events: none;
+        }
+    }
+    img {        
+        object-fit: cover;
+    }
+}
+#img-banner-project-page {
+    // border: 1px solid red;
+    // NOTE: center vertically img-banner within its parents cross axis
+    align-self: center;
+}
+
+// NOTE: flex approach (alternative, not used)
+// without background-color and box shadows
+.duo-flex {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--global-gap); // 25px
+
+    p {
+        flex: 1;
+    }
+    .img-banner {
+        flex: 1;
+    }
+}
+.duo-flex-reverse {
+    flex-direction: row-reverse;
+}
+
+// grid approach (default)
+#duo-grid-card {
+    // back to normal alignment instead of center
+    align-items: normal;
+    
+    // NOTE: overlay video support info to maintain layout
+    .video-support-info {
+        position: absolute;
+        margin: 5px;
+    }
+}
+.duo-grid {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: auto;
+    align-items: center;
+    gap: var(--global-gap); // 25px
+    padding: var(--global-padding); // 25px
+    background-color: var(--secondary-bg-color);
+    
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+.duo-grid-reverse {
+    padding: 0;
+    background-color: var(--page-bg-color);
+    
+    box-shadow: none;
+    
+    direction: rtl;
+    // only revert the layout, text back to default
+    p {
+        direction: initial;
+        text-align: start;
+    }
+}
+
+
+// trio feature showcase grid
+.feature-showcase-grid {
+    // border: 1px solid blue;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    // grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    width: 100%;
+    height: auto;
+    
+    gap: var(--global-gap); // 25px
+    // idea: seperate gap control for grid
+    // row-gap: 25px;
+    // column-gap: 50px;
+
+    .feature-item {
+        // border: 1px solid orange;
+        // NOTE: control the height
+        // height: 300px;
+
+        display: inline-flex;
+        flex-direction: column;
+        
+        gap: inherit;
+        overflow: hidden;
+
+        // NOTE: a feature-item can contain a video & poster with support message, that shifts the layout
+        // use absolute for overlaying the message
+        .video-support-info {
+            position: absolute;
+            margin: 5px;
+        }
+
+        // NOTE: modern only!
+        img, video {
+            aspect-ratio: 1/1;
+            // aspect-ratio: 16/9;
+            object-fit: cover;
+            
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        // video {
+            // object-fit: scale-down;
+        // }
+    }
+    
+}
+
+#footer-project-page {
+    background: var(--grad-end);
+    margin-top: auto;
+    // .footer-container {
+    //     justify-content: center;
+    // }
+}
+
+////////////////////////////////////////////////////////////////
+// /// 404 - PAGE NOT FOUND STYLING ///
+////////////////////////////////////////////////////////////////
+
+.pnf-container {
+    display: inline-flex;
+    flex-direction: column;
+    // gap: var(--global-gap); 
+    // padding: var(--global-padding);
+    // border: 1px solid yellow;
+
+    .error-code {
+        font-size: 3.5rem;
+        // line-height: 1;
+        // border: 1px solid lightblue;
+    }
+    .error-message {
+        font-size: 2rem;
+        // line-height: 1;
+        // border: 1px solid orange;
+    }
+    p {
+        // top and bottom padding only
+        padding: var(--global-padding) 0;
+        // border: 1px solid red;
+    }
+    
+    // NOTE: uses custom-btn as base
+    #return-back-home-btn {
+        width: fit-content;
+        max-width: none;
+    }
+
+    // NOTE: only for not hovering, use the background color as the sidebar 
+    #return-back-home-btn:not(:hover) {
+        background-color: var(--sidebar-custom-btn-color);
+    }
+}
+// NOTE: for page not found profile-resources, gets unpinned and is located after profile-title
+#pnf-profile-resources {
+    // unpin from the bottom
+    margin-top: unset;
+    flex-direction: column;
+}
+
+#pnf-footer {
+    // NOTE: reset everything first, modern browser only
+    all: unset; 
+    
+    display: block;
+    // pin to the bottom
+    margin-top: auto;
+}
+
+// NOTE: for page not found footer container wrap reverse rows, so that 'created by' is the last line
+#pnf-footer-container {
+    // reset padding
+    padding: 0;
+    // flex-direction & flex-wrap
+    flex-flow: row wrap-reverse;
+}
+
+
+////////////////////////////////////////////////////////////////
+// /// MEDIA FOR CONTENT ///
+////////////////////////////////////////////////////////////////
+
+// media queries (WIDTH)
+// desktop first, mobile second
+@media (max-width: 865px) { // 750 865
+  
+    .sidebar {
+        position: unset;
+        min-width: unset;
+    }
+
+    // NOTE: alternative to grid (not used)
+    .page-container-flex {
+        flex-direction: column;
+        // revert to natural sizing
+        .sidebar {
+            flex: unset;
+            max-width: none;
+        }
+        .content {
+            flex: unset;
+        }
+    }
+    
+    // main page layout, type grid (default)
+    .page-container-grid {
+        grid-template-columns: 1fr;
+        grid-auto-flow: row;
+    }
+
+    footer {
+        // text-align: center;
+        // background: var(--footer-bg-color);
+        // use grad-end, which got color assigned to footer bg color
+        background: var(--grad-end);
+    }
+    
+}
+
+@media (max-width: 600px) {
+    // adjust skills grid for mobile
+    .skills-grid {
+        grid-auto-flow: row;
+        gap: var(--global-gap); // 25px
+    }
+    .skill-list {
+        // border: 1px solid red;
+        display: flex;
+        flex-flow: row wrap;
+        gap: 10px;
+    }
+
+    #education-card {
+        background-color: unset;
+        padding: unset;
+    }
+}
+
+// REVIEW: reset sidebar 100vh for extreme narrow width back to 100%
+// @media (max-width: 225px) { // 225 280 320
+//     .sidebar {
+//         height: 100%;
+//     }
+// }
+
+
+// NOTE: only used currently to stack footer content vertically
+// @media (max-width: 350px) {
+//     .footer-container {
+//         flex-direction: column;
+//     }
+// }
+
+// NOTE: media queries for project page mvn
+@media (max-width: 650px) {
+
+    #banner-section {
+        background-color: unset;
+        // NOTE: overflow cover banner image, stretch from start to end of section
+        #cover-img-banner {
+            width: 100vw;
+        }
+    }
+    #cover-img-banner .cover-overlay-title {
+        // border: 1px solid red;
+        top: unset;
+        bottom: 0;
+        width: 100%;
+        padding: 5px;
+        font-size: medium;
+        text-transform: none;
+        background-color: var(--secondary-bg-color);
+        text-align: center;
+    }
+
+    // flex approach (alternative, not used)
+    .duo-flex {
+        flex-direction: column-reverse;
+    }
+
+    #duo-grid-card {
+        // NOTE: revert back to stacked video-support-info in mobile layout
+        .video-support-info {
+            position: static;
+            margin: 0;
+            margin-bottom: 25px;
+        }
+    }
+    // grid approach (dafault)
+    .duo-grid {
+        // border: 1px solid red;
+        grid-template-columns: 1fr;
+        grid-auto-flow: row;
+        direction: ltr;
+        box-shadow: none;
+        
+        padding: 0;
+        background-color: var(--page-bg-color);
+
+        // NOTE: reverse order (image-banner/video-wrapper first, text below)
+        .img-banner,
+        .video-wrapper {
+            grid-row: 1;
+        }
+        p {
+            grid-row: 2;
+        }
+    }
+
+    
+    .feature-showcase-grid {
+        grid-template-columns: 1fr;
+        .feature-item {
+            // NOTE: revert back to stacked video-support-info in mobile layout
+            .video-support-info {
+                position: static;
+                margin: 0;
+                margin-bottom: 25px;
+            }
+
+            img, video {
+                box-shadow: none;
+            }
+        }
+    }
+}
+// NOTE: used when grid template was custom with minmax 250px item
+// @media (max-width: 300px) {
+//     .feature-showcase-grid {
+//         grid-template-columns: 1fr;
+//     }
+// }
+
+
+// NOTE: media queries (HEIGHT)
+@media (max-height: 700px) { // 700 750 800
+    // NOTE: change from 100vh to 100% to prevent overlap
+    .sidebar {
+        // border: 1px solid blue;
+        position: unset;
+        height: 100%;
+        min-width: unset;
+    }
+    // NOTE: subjective, same as page content when layout switch
+    .profile-container {
+        max-width: var(--max-content-width);
+    }
+
+    // NOTE: alternative to grid (not used)
+    .page-container-flex {
+        flex-direction: column;
+        // revert to natural sizing
+        .sidebar {
+           flex: unset;
+           height: fit-content;
+           max-width: none;
+        }
+        .content {
+            flex: unset;
+        }
+    }
+
+    // main page layout, type grid (default) 
+    .page-container-grid {
+        grid-template-columns: 1fr;
+        grid-auto-flow: row;
+    }
+
+    footer {
+        // text-align: center;
+        background: var(--grad-end);
+    }
+}

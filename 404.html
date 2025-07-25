@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles/master/master-style.css">
+
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon/stvms-favicon-blue-16x16.png"/>
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon/stvms-favicon-blue-32x32.png"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/favicon/stvms-favicon-blue-180x180.png">
+    <meta name="apple-mobile-web-app-title" content="stvms dev_portfolio">
+    
+    <!-- PAGE TITLE -->
+    <title>stvms - 404 Page not Found</title>
+    
+    <!-- META -->
+    <meta name="description" content="Page not Found. The page you are looking for is missing or unavailable.">
+    <meta name="keywords" content="404, error, page missing, page not found, stvms error page">
+    <meta name="author" content="dberman - stvms">
+    <!-- created by hand -->
+    <!-- v1.0 -->
+</head>
+<body>
+
+    <nav class="nav-element">
+        <!-- NOTE: hide tooltip-wrapper (including button) when JS is disabled -->
+        <noscript>
+            <style>
+                .tooltip-wrapper {
+                    display: none !important;
+                }
+            </style>
+        </noscript>
+
+       <!-- <div class="tooltip-wrapper">
+           <button id="toggle-theme-btn" class="theme-toggle" aria-label="toggle dark mode">
+               <span class="icon sun">&#x263C;</span>
+               <span class="icon moon">&#x2727;</span>
+           </button>
+           <span class="tooltip-text">Toggle Theme</span>
+        </div> -->
+
+        <div class="tooltip-wrapper">
+            <!-- NOTE: custom svg for button icon sun/moon -->
+            <button id="toggle-theme-btn" class="theme-toggle" aria-label="toggle dark mode">
+                <span class="icon sun" aria-hidden="true">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"/>
+                        <line x1="12" y1="1" x2="12" y2="3"/>
+                        <line x1="12" y1="21" x2="12" y2="23"/>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                        <line x1="1" y1="12" x2="3" y2="12"/>
+                        <line x1="21" y1="12" x2="23" y2="12"/>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                    </svg>
+                </span>
+                <span class="icon moon" aria-hidden="true">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 0111.21 3 7 7 0 0012 21a9 9 0 009-8.21z"/>
+                    </svg>
+                </span>
+            </button>
+
+            <span class="tooltip-text">Toggle Theme</span>
+        </div>
+          
+    </nav>
+
+    <!-- page content -->
+    <main id="main-container">
+
+        <div class="page-container-grid">
+            <!-- sidebar -->
+            <div class="sidebar">
+                <!-- used for profile showcase -->
+                <div class="profile-container">
+                    <div class="profile-pic">
+                        <a class="profile-link" draggable="false" href="https://github.com/stvms" aria-label="stvms github">
+                            <img draggable="false" src="assets/images/stvms-little-burden-profile-01.jpg" alt="profile picture of stvms">
+                        </a>
+                    </div>
+
+                    <!-- profile title -->
+                    <div class="profile-title">
+                        <h1>stvms</h1>
+                        <h2>David Berman</h2>
+                        <p>exploring interactive systems</p>
+                    </div>
+
+                    <!-- profile resources -->
+                    <div id="pnf-profile-resources" class="profile-resources">
+                        <p>
+                            Resume - 
+                            <a href='assets/resources/cv-dberman-de-2025.pdf' target="_blank">DE</a> 
+                            <a href='assets/resources/cv-dberman-en-2025.pdf' target="_blank">EN</a> | 
+                            <a class="mail-link" href="mailto:dave.kb@web.de"> Mail </a> 
+                        </p>
+                    </div>
+
+                    <!-- page not found container, inside profile-container instead of about -->
+                    <div class="pnf-container">
+                        <h1 class="error-code">404</h1>
+                        <h2 class="error-message">Page not Found</h2>
+                        <p>Looks like the link you clicked may be broken or the page may have been removed.</p>
+                        <!-- return to front page, index.html in root directory  -->
+                        <a id="return-back-home-btn" class="custom-btn" draggable="false" href="/">Return to Frontpage</a>
+                    </div>
+
+                
+                    <!-- NOTE: footer now inside of sidebar -->
+                    <!-- FOOTER -->
+                    <footer id="pnf-footer">
+                        <div id="pnf-footer-container" class="footer-container">
+                            <p>2025 Created by David Berman.</p>
+                            <p>Frankfurt am Main</p>
+                        </div>
+                    </footer>
+                </div>
+            
+            </div>
+
+            <!-- NOTE: no content side -->
+            <!-- <div class="content" style="display: none;"></div> -->
+
+        </div>
+    </main>
+
+
+    <!-- JS Script -->
+    <script src="scripts/toggle_theme_01.js" defer></script>
+    
+</body>
+</html>
