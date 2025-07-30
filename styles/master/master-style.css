@@ -262,9 +262,9 @@ a:hover {
   min-width: var(--min-sidebar-width);
 }
 
-@supports (height: 100svh) {
+@supports (height: 100dvh) {
   .sidebar {
-    height: 100svh;
+    height: 100dvh;
   }
 }
 .content {

@@ -387,10 +387,10 @@ a:hover {
     //max-width: var(--max-sidebar-width); // subjective
 }
 // NOTE: override height with new css unit
-@supports (height: 100svh) {
+@supports (height: 100dvh) {
     // prevents issue, where elements can be behind adressbar on mobile
     .sidebar {
-        height: 100svh; // alternative dvh
+        height: 100dvh; // or svh
     }
 }
 // right side
