@@ -262,6 +262,11 @@ a:hover {
   min-width: var(--min-sidebar-width);
 }
 
+@supports (height: 100svh) {
+  .sidebar {
+    height: 100svh;
+  }
+}
 .content {
   margin-top: 25px;
   overflow-y: auto;
@@ -764,6 +769,11 @@ footer {
   flex-flow: row wrap-reverse;
 }
 
+@media (hover: none) {
+  .tooltip-text {
+    display: none;
+  }
+}
 @media (max-width: 865px) {
   .sidebar {
     position: unset;
