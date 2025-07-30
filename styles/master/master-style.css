@@ -779,6 +779,11 @@ footer {
     position: unset;
     min-width: unset;
   }
+  @supports (height: 100svh) {
+    .sidebar {
+      height: 100svh;
+    }
+  }
   .page-container-flex {
     flex-direction: column;
   }
