@@ -752,6 +752,11 @@ footer {
   height: 100%;
 }
 
+@supports (height: -webkit-fill-available) {
+  #pnf-profile-container {
+    height: -webkit-fill-available;
+  }
+}
 #pnf-profile-resources {
   margin-top: unset;
   flex-direction: column;

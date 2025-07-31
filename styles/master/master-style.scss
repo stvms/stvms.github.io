@@ -1072,6 +1072,12 @@ footer {
 #pnf-profile-container {
     height: 100%;
 }
+@supports (height: -webkit-fill-available) {
+    #pnf-profile-container {
+        // NOTE: ios specific, try to fit pnf-footer into available space
+        height: -webkit-fill-available;
+    }
+}
 // NOTE: for page not found profile-resources, gets unpinned and is located after profile-title
 #pnf-profile-resources {
     // unpin from the bottom
