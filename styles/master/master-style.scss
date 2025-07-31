@@ -1068,16 +1068,28 @@ footer {
         background-color: var(--sidebar-custom-btn-color);
     }
 }
-// NOTE: when not using vh for sidebar, else remove
-#pnf-profile-container {
-    height: 100%;
+// NOTE: remove pnf-sidebar, pnf-profile-container when using 100vh for sidebar directly
+// now sidebar is sticky instead of profile container (only pnf page)
+#pnf-sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
 }
-@supports (height: -webkit-fill-available) {
-    #pnf-profile-container {
-        // NOTE: ios specific, try to fit pnf-footer into available space
-        height: -webkit-fill-available;
+// NOTE: override height with new css unit
+@supports (height: 100dvh) {
+    // prevents issue, where elements can be behind adressbar on mobile
+    #pnf-sidebar {
+        height: 100dvh; // or svh
     }
 }
+// NOTE: when not using vh for sidebar, else remove
+#pnf-profile-container {
+    position: unset;
+    top: unset;
+    height: 100%;
+}
+
+
 // NOTE: for page not found profile-resources, gets unpinned and is located after profile-title
 #pnf-profile-resources {
     // unpin from the bottom
@@ -1277,7 +1289,8 @@ footer {
 // NOTE: media queries (HEIGHT)
 @media (max-height: 700px) { // 700 750 800
     // NOTE: change from 100vh to 100% to prevent overlap
-    .sidebar {
+    .sidebar,
+    #pnf-sidebar {
         // border: 1px solid blue;
         position: unset;
         height: 100%;
