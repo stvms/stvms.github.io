@@ -275,7 +275,7 @@ body {
     // main flex
     display: flex;
     flex-direction: column;
-    min-height: 100vh
+    min-height: 100vh;
 }
 
 ////////////////////////////////////////////////////////////////
@@ -371,28 +371,30 @@ a:hover {
 // left side
 .sidebar {
     // border: 1px solid purple;
-    position: sticky;
-    top: 0;
+    // position: sticky;
+    // top: 0;
     align-self: start;
     background-color: var(--sidebar-bg-color);
-    height: 100vh;
+    // height: 100vh;
     width: 100%;
-    
+    height: 100%;
+
     // display: flex;
     // flex-direction: column;
     // min-height: 100vh;
     
-    overflow-y: auto;
+    // overflow-y: auto;
     min-width: var(--min-sidebar-width);
     //max-width: var(--max-sidebar-width); // subjective
 }
 // NOTE: override height with new css unit
-@supports (height: 100dvh) {
-    // prevents issue, where elements can be behind adressbar on mobile
-    .sidebar {
-        height: 100dvh; // or svh
-    }
-}
+// @supports (height: 100dvh) {
+//     // prevents issue, where elements can be behind adressbar on mobile
+//     .sidebar {
+//         height: 100dvh; // or svh
+//     }
+// }
+
 // right side
 .content {
     // border: 1px solid brown;
@@ -402,6 +404,11 @@ a:hover {
 }
 
 .profile-container  {
+    // NOTE: if not using vh for sidebar, use sticky top in profile container directly instead
+    // also change height from 100% to fit-content
+    position: sticky;
+    top: 0;
+
     // border: 3px solid magenta;
     
     flex-grow: 1;
@@ -415,7 +422,7 @@ a:hover {
     // min-height: 0;
 
     width: 100%;
-    height: 100%;
+    height: fit-content; // 100%
     padding: var(--global-padding);
 }
 .profile-pic {
@@ -1061,6 +1068,10 @@ footer {
         background-color: var(--sidebar-custom-btn-color);
     }
 }
+// NOTE: when not using vh for sidebar, else remove
+#pnf-profile-container {
+    height: 100%;
+}
 // NOTE: for page not found profile-resources, gets unpinned and is located after profile-title
 #pnf-profile-resources {
     // unpin from the bottom
@@ -1107,12 +1118,12 @@ footer {
         min-width: unset;
     }
     // NOTE: override height with new css unit
-    @supports (height: 100svh) {
-    // for mobile and single column layout use svh instead
-        .sidebar {
-            height: 100svh;
-        }
-    }
+    // @supports (height: 100svh) {
+    // // for mobile and single column layout use svh instead
+    //     .sidebar {
+    //         height: 100svh;
+    //     }
+    // }
 
     // NOTE: alternative to grid (not used)
     .page-container-flex {
