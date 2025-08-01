@@ -371,29 +371,29 @@ a:hover {
 // left side
 .sidebar {
     // border: 1px solid purple;
-    // position: sticky;
-    // top: 0;
+    position: sticky;
+    top: 0;
     align-self: start;
     background-color: var(--sidebar-bg-color);
-    // height: 100vh;
+    height: 100vh;
     width: 100%;
-    height: 100%;
+    // height: 100%;
 
     // display: flex;
     // flex-direction: column;
     // min-height: 100vh;
     
-    // overflow-y: auto;
+    overflow-y: auto;
     min-width: var(--min-sidebar-width);
     //max-width: var(--max-sidebar-width); // subjective
 }
 // NOTE: override height with new css unit
-// @supports (height: 100dvh) {
-//     // prevents issue, where elements can be behind adressbar on mobile
-//     .sidebar {
-//         height: 100dvh; // or svh
-//     }
-// }
+@supports (height: 100dvh) {
+    // prevents issue, where elements can be behind adressbar on mobile
+    .sidebar {
+        height: 100dvh; // or svh
+    }
+}
 
 // right side
 .content {
@@ -406,8 +406,8 @@ a:hover {
 .profile-container  {
     // NOTE: if not using vh for sidebar, use sticky top in profile container directly instead
     // also change height from 100% to fit-content
-    position: sticky;
-    top: 0;
+    // position: sticky;
+    // top: 0;
 
     // border: 3px solid magenta;
     
@@ -422,7 +422,7 @@ a:hover {
     // min-height: 0;
 
     width: 100%;
-    height: fit-content; // 100%
+    height: 100%; // 100%, fit-content
     padding: var(--global-padding);
 }
 .profile-pic {
@@ -1068,27 +1068,19 @@ footer {
         background-color: var(--sidebar-custom-btn-color);
     }
 }
-// NOTE: remove pnf-sidebar, pnf-profile-container when using 100vh for sidebar directly
+// NOTE: (disabled) pnf-sidebar, pnf-profile-container when using 100vh for sidebar directly
 // now sidebar is sticky instead of profile container (only pnf page)
-#pnf-sidebar {
-    position: sticky;
-    top: 0;
-    height: 100vh;
-}
-// NOTE: override height with new css unit
-@supports (height: 100dvh) {
-    // prevents issue, where elements can be behind adressbar on mobile
-    #pnf-sidebar {
-        height: 100dvh; // or svh
-    }
-}
-// NOTE: when not using vh for sidebar, else remove
-#pnf-profile-container {
-    position: unset;
-    top: unset;
-    height: 100%;
-}
-
+// #pnf-sidebar {
+//     position: sticky;
+//     top: 0;
+//     height: 100vh;
+// }
+// // NOTE: when not using vh for sidebar, else remove
+// #pnf-profile-container {
+//     position: unset;
+//     top: unset;
+//     height: 100%;
+// }
 
 // NOTE: for page not found profile-resources, gets unpinned and is located after profile-title
 #pnf-profile-resources {
@@ -1136,12 +1128,12 @@ footer {
         min-width: unset;
     }
     // NOTE: override height with new css unit
-    // @supports (height: 100svh) {
-    // // for mobile and single column layout use svh instead
-    //     .sidebar {
-    //         height: 100svh;
-    //     }
-    // }
+    @supports (height: 100svh) {
+        // for mobile and single column layout use svh instead
+        .sidebar {
+            height: 100svh;
+        }
+    }
 
     // NOTE: alternative to grid (not used)
     .page-container-flex {
@@ -1289,8 +1281,8 @@ footer {
 // NOTE: media queries (HEIGHT)
 @media (max-height: 700px) { // 700 750 800
     // NOTE: change from 100vh to 100% to prevent overlap
-    .sidebar,
-    #pnf-sidebar {
+    // #pnf-sidebar,
+    .sidebar {
         // border: 1px solid blue;
         position: unset;
         height: 100%;
